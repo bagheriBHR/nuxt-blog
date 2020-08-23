@@ -1,0 +1,22 @@
+$lightGray: rgba(0,0,0,0.05);
+$darkGray: rgba(0,0,0,0.7);
+$orange: #ec7741;
+$title:rgba(0,0,0,0.6);
+$headerFontColor:rgba(0,0,0,0.5);
+$p:rgba(0,0,0,0.5);
+$blue:#413d77;
+.bg-footer{
+  background-color:rgba(0,0,0,0.2);
+}
+.bg-orange{
+  background-color:$orange;
+}
+.bg-gray{
+  background-color:$lightGray ;
+}
+.customShadow{
+  box-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+.VueCarousel-wrapper{
+  padding-bottom: 15px !important;
+}

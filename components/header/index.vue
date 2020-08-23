@@ -1,0 +1,323 @@
+<template>
+  <div class="bg-gray position-relative ">
+    <div class="pattern position-absolute" :style="{ backgroundImage: `url(${backgroundUrl})` }"></div>
+    <div class="pattern2 position-absolute" style="background-color: #47494e"></div>
+    <div class="position-relative" style="z-index: 2">
+      <!--  start of contact information   -->
+      <div class="top_header d-flex flex-column flex-md-row align-items-center justify-content-between px-0 px-md-5 py-3">
+        <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-start follow mb-3 mb-md-0 p-0">
+          <a><i class="fa fa-instagram"></i></a>
+          <a><i class="fa fa-whatsapp"></i></a>
+          <a><i class="fa fa-telegram"></i></a>
+          <a><i class="fa fa-twitter"></i></a>
+          <a><i class="fa fa-facebook"></i></a>
+        </div>
+        <div class="col-12 col-md-4 d-none d-md-block justify-content-center p-0">
+          <form class="position-relative form-inline">
+            <input type="text" placeholder="کالا مورد نظر خود را وارد کنید...">
+            <i class="fa fa-search position-absolute"></i>
+          </form>
+        </div>
+        <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-end p-0 info">
+          <span class="ml-3">info@mysite.com<i class="fa fa-envelope mr-2"></i></span>
+          <span class="">989132924768+<i class="fa fa-phone mr-2"></i></span>
+        </div>
+    </div>
+      <!--  end of contact information   -->
+
+      <!--  start of navbar   -->
+      <div class="middle_header mx-0 mx-md-5">
+        <b-navbar toggleable="lg" type="light" variant="white" class="p-0">
+          <b-navbar-brand href="#" class="logo_container">
+            <img src="@/assets/image/logo.png">
+            <a class="navbar-brand" href="#">نام <span>وب سایت</span></a>
+          </b-navbar-brand>
+
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+          <b-collapse id="nav-collapse" is-nav>
+            <b-navbar-nav class="mr-0 mr-md-5 px-4 pl-md-0 pr-md-5">
+              <b-nav-item href="#">
+                <div class="d-flex">
+                <i class="fa fa-home d-block d-md-none ml-2"></i>
+                <span> صفحه اصلی</span>
+                </div>
+              </b-nav-item>
+              <b-nav-item href="#">
+                <div class="d-flex">
+                <i class="fa fa-home d-block d-md-none ml-2"></i>
+                <span>خدمات </span>
+                </div>
+              </b-nav-item>
+              <b-nav-item href="#">
+                <div class="d-flex">
+                  <i class="fa fa-home d-block d-md-none ml-2"></i>
+                  <span> محصولات </span>
+                </div>
+              </b-nav-item>
+              <b-nav-item href="#">
+                <div class="d-flex">
+                  <i class="fa fa-home d-block d-md-none ml-2"></i>
+                  <span>تماس با ما</span>
+                </div>
+              </b-nav-item>
+              <b-nav-item href="#">
+                <div class="d-flex">
+                  <i class="fa fa-home d-block d-md-none ml-2"></i>
+                  <span> درباره ما</span>
+                </div>
+              </b-nav-item>
+            </b-navbar-nav>
+
+            <div class="header_button d-flex justify-content-around bg-orange mx-4 mr-md-auto">
+              <b-nav-item
+                href="#" v-b-modal.modal-no-backdrop class="login position-relative">ورود</b-nav-item>
+              <b-modal id="modal-no-backdrop" size="sm" hide-backdrop content-class="shadow"
+                       header-text-variant="light" title="ورود به سیتم">
+                <b-input-group>
+                  <template v-slot:prepend>
+                    <div class="prependIcon"><i class="fa fa-envelope"></i></div>
+                  </template>
+                  <b-form-input v-model="email" size="sm" placeholder="پست الکترونیکی"></b-form-input>
+                </b-input-group>
+                <b-input-group class="mt-3">
+                  <template v-slot:prepend>
+                    <div class="prependIcon"><i class="fa fa-lock"></i></div>
+                  </template>
+                  <b-form-input v-model="password" size="sm" placeholder="رمز عبور"></b-form-input>
+                </b-input-group>
+                <template v-slot:modal-footer="{ ok }">
+                  <!-- Emulate built in modal footer ok and cancel button actions -->
+                  <b-button size="sm" variant="success" @click="ok()">
+                    ورود
+                  </b-button>
+                </template>
+              </b-modal>
+
+              <b-nav-item href="#">عضویت</b-nav-item>
+            </div>
+          </b-collapse>
+
+          <div class="d-block d-md-none w-100 mx-4 my-3">
+            <form class="position-relative form-inline">
+              <input type="text" placeholder="کالا مورد نظر خود را وارد کنید...">
+              <i class="fa fa-search position-absolute"></i>
+            </form>
+          </div>
+
+        </b-navbar>
+      </div>
+      <!--   end of navbar   -->
+    </div>
+  </div>
+</template>
+
+<script>
+    import backgroundUrl from '@/assets/image/pattern.png'
+    export default {
+        name: "index",
+        data() {
+          return { backgroundUrl }
+       }
+    }
+</script>
+
+<style lang="scss" scoped>
+  @media (max-width: 991px) {
+    .top_header form{
+      width: 90% !important;
+    }
+    .middle_header{
+      background-color: $orange;
+      padding: 5px 0;
+    }
+    .nav-link{
+      color: rgba(0,0,0,0.5) !important;
+      text-align: right;
+    }
+    .nav-item{
+      padding: 5px;
+      border-bottom: 1px solid $orange;
+    }
+    .nav-item i{
+      font-size: 1rem;
+    }
+  }
+  @media (min-width: 992px) {
+    .logo_container::before {
+      right: 100px;
+      width: 16%;
+      transform: skew(-30deg);
+    }
+
+    .logo_container::after, .logo_container::before {
+      background-color: #fff;
+      content: "";
+      position: absolute;
+      top: 0;
+      height: 100%;
+      z-index: -1;
+    }
+    #nav-collapse {
+      height: 60px;
+      background-color: $orange;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+    }
+    .navbar  ul  li  a , .header_button a{
+      color: #fff0e0 !important;
+      padding: 0 15px !important;
+    }
+    .header_button .login:after{
+      content: "";
+      height: 13px;
+      width: 1px;
+      background-color: rgba(255,255,255,0.3);
+      position: absolute;
+      top: 5px;
+      left: 0;
+    }
+  }
+
+  .bg{
+    /*<!--background:linear-gradient($darkGray,$lightGray);-->*/
+    background-color: $darkGray;
+  }
+  .pattern{
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.05;
+    z-index: 1;
+  }
+  .pattern2{
+    width: 100%;
+    height: 93px;
+  }
+  .top_header .follow i{
+    font-size: 0.8rem !important;
+    cursor: pointer;
+    border-right: 1px solid rgba(255,255,255,0.3);
+    padding: 0 15px;
+    color: rgba(255,255,255,0.8);
+  }
+  .top_header .follow i:hover{
+    color: rgba(255,255,255,0.7);
+  }
+  .top_header .follow a:first-child i{
+    border-right: none !important;
+    padding-right: 0px !important;
+  }
+  .form-inline{
+    background-color: #6f6f6f;
+    width: 100%;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+  }
+  .form-inline > input{
+    background-color: transparent;
+    min-width: 100% !important;
+    border: none !important;
+    outline: none !important;
+    color: #fff;
+    padding:5px 10px;
+    padding-left: 32px;
+  }
+  .form-inline > input::placeholder{
+    color: rgba(255,255,255,0.5);
+  }
+  .form-inline > i{
+    position: absolute;
+    top: 7px;
+    left: 9px;
+    cursor: pointer;
+    color: rgba(255,255,255,0.7);
+  }
+  .top_header .info span{
+    color: rgba(255,255,255,0.8);
+    font-size: 0.8rem;
+  }
+  .middle_header{
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  .logo_container {
+    z-index: 9;
+  }
+  .logo_container img{
+    width: 50px;
+    height: auto;
+  }
+  .navbar-toggler{
+    outline: none !important;
+    border: none !important;
+    margin-left: 10px;
+    color: rgba(0,0,0,1) !important;
+  }
+  .navbar-toggler-icon{
+    color: rgba(0,0,0,1) !important;
+  }
+  .navbar-brand{
+    color: #877f77 !important;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .navbar-brand > span{
+    color: #ad9d6a !important;
+  }
+  .navbar  ul  li  a , .header_button a{
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  .header_button a {
+    color: #fff0e0 !important;
+  }
+  .header_button li{
+    border-bottom: none;
+    list-style-type: none;
+  }
+  .modal-footer .btn{
+    background-color: $orange;
+    border: none !important;
+    padding: 5px 40px;
+    border-radius: 2px;
+    font-size: 0.9rem;
+  }
+  .prependIcon{
+    font-size: 1rem;
+    margin-left: 10px;
+    color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+  }
+</style>
+<style lang="scss">
+  .close{
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+  .modal-title{
+    font-size: 1rem !important;
+  }
+  .modal-content , .modal-header{
+    border-radius: 1px !important;
+  }
+  .modal-body input{
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(0,0,0,0.2) !important;
+    border-radius: 0px !important;
+  }
+  .modal-footer{
+    border-top: none !important;
+  }
+  .modal-header{
+    padding:10px !important;
+    background-color: $darkGray;
+  }
+  .modal-header button{
+    outline: none !important;
+    border: none !important;
+  }
+</style>
