@@ -1,22 +1,29 @@
 <template>
-  <div class="sidebar d-flex flex-column align-items-start">
-    <div class="d-flex flex-column align-item-start w-100">
-      <b-card no-body class="mb-2" v-for="item in attributeGroups" :key="item.title">
+    <div>
+      <b-card no-body class="mb-2">
         <b-card-header header-tag="header" class="p-0" role="tab">
-          <b-button block v-b-toggle="'accordion-'+item.title" variant="white">{{item.title}}</b-button>
+          <b-button block v-b-toggle="'accordion-'+attributeGroup.id" variant="white">{{attributeGroup.title}}</b-button>
         </b-card-header>
-        <b-collapse :id="'accordion-'+item.title" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
+        <b-collapse :id="'accordion-'+attributeGroup.id" accordion="my-accordion" role="tabpanel">
+          <b-card-body class="p-0">
             <b-card-text>
-              <b-form-checkbox-group
-                v-model="selected"
-                :options="item.attributeValues"
-                class="mb-3"
-                value-field="item"
-                text-field="name"
-                disabled-field="notEnabled"
-                stacked
-              ></b-form-checkbox-group>
+              <div class="border-bottom pb-3 my-3 mx-2">
+                <form class="position-relative form-inline">
+                  <input type="text" placeholder="جستجو کنید..." v-model="filterText">
+                  <i class="fa fa-search position-absolute"></i>
+                </form>
+              </div>
+              <div class="itemContainer px-4">
+                <b-form-checkbox-group
+                  v-model="selected"
+                  :options="filter"
+                  class="mb-3"
+                  value-field="item"
+                  text-field="name"
+                  disabled-field="notEnabled"
+                  stacked
+                ></b-form-checkbox-group>
+              </div>
             </b-card-text>
           </b-card-body>
         </b-collapse>
@@ -37,19 +44,27 @@
 <!--      </div>-->
 
     </div>
-  </div>
 </template>
 
 <script>
   export default {
     name: "index",
-    props:['attributeGroups'],
+    props:['attributeGroup'],
     data() {
       return {
         selected: [],
-        options: [
-
-        ]
+        options: [],
+        filterText:'',
+        items:[],
+      }
+    },
+    computed:{
+      filter(){
+        this.items = this.attributeGroup.attributeValues;
+        console.log(this.items);
+        return this.items.filter((element)=>{
+          return element.match(this.filterText)
+        })
       }
     }
   }
@@ -98,6 +113,34 @@
     text-decoration: none;
     color: rgb(144, 144, 144);
     font-size: 0.8rem;
+  }
+  .form-inline{
+    background-color: transparent;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.3);
+  }
+  .form-inline > input{
+    background-color: transparent;
+    min-width: 100% !important;
+    border: none !important;
+    outline: none !important;
+    color: $title;
+    padding:5px 10px;
+    padding-left: 32px;
+  }
+  .form-inline > input::placeholder{
+    color: $title;
+  }
+  .form-inline > i{
+    position: absolute;
+    top: 7px;
+    left: 9px;
+    cursor: pointer;
+    color: rgba(0,0,0,0.5);
+  }
+  .itemContainer{
+    max-height: 200px;
+    overflow-y: scroll;
   }
 </style>
 <style>
