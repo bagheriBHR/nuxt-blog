@@ -31,39 +31,19 @@
 <!--    END OF TOP SERVICES   -->
 
 <!--    PRODUCTS   -->
-    <div class="col-12 p-0 d-flex flex-column flex-md-row mt-4 px-2 px-md-5">
-      <div class="col-12 col-md-2 p-0">
-        <RightSidebar title="دسته بندی محصولات" :category="productCategory"/>
-      </div>
-      <div class="col-12 col-md-10 px-0 pr-md-2 mt-3 mt-md-0">
-        <div class="customShadow d-flex flex-column bg-white p-4">
-        <Title title="جدیدترین محصولات" show="true"/>
-          <carousel  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1], [1024, 4]]" :pagination-enabled="true" :navigation-enabled="true">
-            <slide v-for="item in products" :key="item.id" class="px-md-1">
-              <Product :product="item" />
-            </slide>
-          </carousel>
-        </div>
-      </div>
-    </div>
+      <category-item
+        title="جدیدترین محصولات"
+        :category="productCategory"
+        :products="products"
+      />
 <!--    END OF PRODUCTS   -->
 
 <!--    services   -->
-    <div class="col-12 p-0 d-flex flex-column flex-md-row mt-4 px-2 px-md-5">
-      <div class="col-12 col-md-2 p-0">
-        <RightSidebar title="خدمات" :category="serviceCategory"/>
-      </div>
-      <div class="col-12 col-md-10 px-0 pr-md-2 mt-3 mt-md-0">
-        <div class="customShadow d-flex flex-column bg-white p-4">
-          <Title title="خدمات" show="true"/>
-          <carousel  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1], [1024, 4]]" :pagination-enabled="true" :navigation-enabled="true">
-            <slide v-for="item in services" :key="item.id">
-              <service-item :photo="item.photo" :title="item.title"/>
-            </slide>
-          </carousel>
-        </div>
-      </div>
-    </div>
+      <category-item
+        title="خدمات"
+        :category="serviceCategory"
+        :services="services"
+      />
 <!--    end of services   -->
 
 <!--    portfolio   -->
@@ -122,23 +102,19 @@
 
 <script>
   import Service from '@/components/services'
-  import Product from '@/components/product'
-  import RightSidebar from '@/components/rightSideBar'
   import portfolioCarousel from '@/components/portfolioCarousel'
   import TimeLineItem from '@/components/timeLineItem'
   import CommentItem from '@/components/commentItem'
   import Title from '@/components/title'
-  import ServiceItem from '@/components/serviceItem'
+  import CategoryItem from '@/components/mainPageCategoryItem'
   export default {
     components:{
       Service,
-      Product,
-      RightSidebar,
       portfolioCarousel,
       TimeLineItem,
       CommentItem,
       Title,
-      ServiceItem
+      CategoryItem
     },
     data() {
       return {

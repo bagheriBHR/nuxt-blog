@@ -22,6 +22,9 @@
 </script>
 
 <style>
+  .customCarousel .VueCarousel-wrapper{
+    padding-bottom: 0 !important;
+  }
   .customCarousel img{
     border-radius: 2px;
   }

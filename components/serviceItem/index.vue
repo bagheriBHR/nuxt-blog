@@ -1,10 +1,10 @@
 <template>
   <div class="mx-2 d-flex flex-column mt-4 mt-md-0">
     <div class="img_container">
-      <img  :src="require('@/assets/img/' + photo)" class="w-100">
+      <img  :src="require('@/assets/img/' + item.photo)" class="w-100">
     </div>
     <div class="title text-center p-1 mt-2">
-      <h6 class="w-100 m-0 p-2">{{title}}</h6>
+      <h6 class="w-100 m-0 p-2">{{item.title}}</h6>
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@
 <script>
     export default {
         name: "index",
-        props:['photo','title']
+        props:['item']
     }
 </script>
 

@@ -13,10 +13,7 @@
           <a><i class="fa fa-facebook"></i></a>
         </div>
         <div class="col-12 col-md-4 d-none d-md-block justify-content-center p-0">
-          <form class="position-relative form-inline">
-            <input type="text" placeholder="کالا مورد نظر خود را وارد کنید...">
-            <i class="fa fa-search position-absolute"></i>
-          </form>
+          <SearchBox />
         </div>
         <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-end p-0 info">
           <span class="ml-3">info@mysite.com<i class="fa fa-envelope mr-2"></i></span>
@@ -37,36 +34,17 @@
 
           <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav class="mr-0 mr-md-5 px-4 pl-md-0 pr-md-5">
-              <b-nav-item href="#">
-                <div class="d-flex">
-                <i class="fa fa-home d-block d-md-none ml-2"></i>
-                <span> صفحه اصلی</span>
-                </div>
-              </b-nav-item>
-              <b-nav-item href="#">
-                <div class="d-flex">
-                <i class="fa fa-home d-block d-md-none ml-2"></i>
-                <span>خدمات </span>
-                </div>
-              </b-nav-item>
-              <b-nav-item href="#">
-                <div class="d-flex">
-                  <i class="fa fa-home d-block d-md-none ml-2"></i>
-                  <span> محصولات </span>
-                </div>
-              </b-nav-item>
-              <b-nav-item href="#">
-                <div class="d-flex">
-                  <i class="fa fa-home d-block d-md-none ml-2"></i>
-                  <span>تماس با ما</span>
-                </div>
-              </b-nav-item>
-              <b-nav-item href="#">
-                <div class="d-flex">
-                  <i class="fa fa-home d-block d-md-none ml-2"></i>
-                  <span> درباره ما</span>
-                </div>
-              </b-nav-item>
+              <div v-for="link in navbarLinks">
+                <b-nav-item  v-if="!link.subMenu" :to="link.href">
+                  <div class="d-flex">
+<!--                  <i class="fa fa-home d-block d-md-none ml-2"></i>-->
+                  <span> {{link.name}}</span>
+                  </div>
+                </b-nav-item>
+                <b-nav-item-dropdown :text="link.name" v-else right>
+                  <b-dropdown-item v-for="subLink in link.subMenu" :to="subLink.href">{{subLink.name}}</b-dropdown-item>
+                </b-nav-item-dropdown>
+              </div>
             </b-navbar-nav>
 
             <div class="header_button d-flex justify-content-around bg-orange mx-4 mr-md-auto">
@@ -99,10 +77,7 @@
           </b-collapse>
 
           <div class="d-block d-md-none w-100 mx-4 my-3">
-            <form class="position-relative form-inline">
-              <input type="text" placeholder="کالا مورد نظر خود را وارد کنید...">
-              <i class="fa fa-search position-absolute"></i>
-            </form>
+            <SearchBox />
           </div>
 
         </b-navbar>
@@ -114,11 +89,49 @@
 
 <script>
     import backgroundUrl from '@/assets/image/pattern.png'
+    import SearchBox from './searchBox'
     export default {
         name: "index",
         data() {
-          return { backgroundUrl }
-       }
+          return {
+            backgroundUrl,
+            navbarLinks:[
+              {
+                name:'صفحه اصلی',
+                href:'/',
+              },
+              {
+                name:'محصولات',
+                href:'/category',
+                subMenu:[
+                  {
+                    name:'کولر',
+                    href:''
+                  },
+                  {
+                    name:'بخاری',
+                    href:''
+                  },
+                  {
+                    name:'شوفاژ',
+                    href:''
+                  },
+                ]
+              },
+              {
+                name:'درباره ما',
+                href:'/aboutUs',
+              },
+              {
+                name:'تماس با ما',
+                href:'',
+              },
+            ]
+          }
+       },
+      components:{
+          SearchBox,
+      }
     }
 </script>
 
@@ -130,10 +143,6 @@
     .middle_header{
       background-color: $orange;
       padding: 5px 0;
-    }
-    .nav-link{
-      color: rgba(0,0,0,0.5) !important;
-      text-align: right;
     }
     .nav-item{
       padding: 5px;
@@ -164,17 +173,13 @@
       border-top: 1px solid #fff;
       border-bottom: 1px solid #fff;
     }
-    .navbar  ul  li  a , .header_button a{
-      color: #fff0e0 !important;
-      padding: 0 15px !important;
-    }
     .header_button .login:after{
       content: "";
       height: 13px;
       width: 1px;
       background-color: rgba(255,255,255,0.3);
       position: absolute;
-      top: 5px;
+      top: 11px;
       left: 0;
     }
   }
@@ -210,30 +215,6 @@
     border-right: none !important;
     padding-right: 0px !important;
   }
-  .form-inline{
-    background-color: #6f6f6f;
-    width: 100%;
-    box-shadow: 0 0 3px rgba(0,0,0,0.1);
-  }
-  .form-inline > input{
-    background-color: transparent;
-    min-width: 100% !important;
-    border: none !important;
-    outline: none !important;
-    color: #fff;
-    padding:5px 10px;
-    padding-left: 32px;
-  }
-  .form-inline > input::placeholder{
-    color: rgba(255,255,255,0.5);
-  }
-  .form-inline > i{
-    position: absolute;
-    top: 7px;
-    left: 9px;
-    cursor: pointer;
-    color: rgba(255,255,255,0.7);
-  }
   .top_header .info span{
     color: rgba(255,255,255,0.8);
     font-size: 0.8rem;
@@ -265,10 +246,6 @@
   .navbar-brand > span{
     color: #ad9d6a !important;
   }
-  .navbar  ul  li  a , .header_button a{
-    font-size: 0.9rem;
-    font-weight: bold;
-  }
   .header_button a {
     color: #fff0e0 !important;
   }
@@ -292,6 +269,52 @@
   }
 </style>
 <style lang="scss">
+  @media(min-width:992px ) {
+    .navbar .nav-link, .header_button a {
+      color: #fff0e0 !important;
+      padding-left: 15px !important;
+      font-size: 1rem;
+      outline: none;
+      box-shadow: none;
+    }
+    .dropdown-menu {
+      text-align: right !important;
+      margin: 0.6rem 0 0;
+      border-radius: 0;
+      padding: 0px;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    }
+  }
+  @media (max-width: 991px) {
+    .nav-link{
+      color: rgba(0,0,0,0.5) !important;
+      text-align: right;
+    }
+    .dropdown-item{
+      text-align: right;
+    }
+    .dropdown-menu{
+      margin-right: 15px;
+      border: none;
+    }
+    .dropdown-menu li:last-child .dropdown-item{
+      border-bottom:none ;
+    }
+  }
+  .navbar  .nav-link, .header_button a{
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  .dropdown-item{
+    color: rgba(0,0,0,0.7);
+    font-size: 0.9rem;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    padding-right: 15px;
+  }
+  .dropdown-toggle::after{
+    margin-right: 0.745em;
+  }
   .close{
     padding: 0px !important;
     margin: 0px !important;
