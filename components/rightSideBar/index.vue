@@ -12,7 +12,7 @@
             <b-card-body>
               <b-card-text>
                 <ul class="pr-1">
-                  <li v-for="subItem in item.subCategory" :key="subItem"><button> {{subItem}}</button></li>
+                  <li v-for="subItem in item.subCategory" :key="subItem"><button @click="subItemClicked(subItem)"> {{subItem}}</button></li>
                 </ul>
               </b-card-text>
             </b-card-body>
@@ -25,8 +25,13 @@
 
 <script>
     export default {
-        name: "index",
-      props:['title','category','attributeGroup']
+      name: "index",
+      props:['title','category','attributeGroup'],
+      methods:{
+        subItemClicked(subItemName){
+          this.$emit('subItemClicked',subItemName)
+        }
+      }
     }
 </script>
 

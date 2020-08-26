@@ -1,6 +1,9 @@
 <template>
   <div class="col-12 d-flex p-0 mb-3 line position-relative d-flex justify-content-between">
-      <h2 class="title pb-2 m-0 text-right position-relative pl-5">{{title}}</h2>
+      <h2 class="title pb-2 m-0 text-right position-relative pl-5">
+        {{title}}
+      <span v-if="subItem">( {{subItem}} )</span>
+      </h2>
       <div v-if="show"><a> نمایش همه</a></div>
   </div>
 </template>
@@ -8,7 +11,7 @@
 <script>
     export default {
         name: "index",
-        props:['title','show']
+        props:['title','show','subItem']
     }
 </script>
 

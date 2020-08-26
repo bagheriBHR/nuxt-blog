@@ -1,11 +1,11 @@
 <template>
   <div class="col-12 p-0 d-flex flex-column flex-md-row mt-4 px-2 px-md-5">
     <div class="col-12 col-md-2 p-0">
-      <RightSidebar :title="title" :category="category"/>
+      <RightSidebar :title="title" :category="category" @subItemClicked="subItem=$event"/>
     </div>
     <div class="col-12 col-md-10 px-0 pr-md-2 mt-3 mt-md-0">
       <div class="customShadow d-flex flex-column bg-white p-4">
-        <Title :title="title" show="true"/>
+        <Title :title="title" :subItem="subItem" show="true"/>
         <carousel  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1], [1024, 4]]" :pagination-enabled="true" :navigation-enabled="true">
           <slide v-for="item in services" :key="item.id" v-if="services">
             <service-item :item="item"/>
@@ -76,9 +76,10 @@
               title:'تعمیر شوفاژ'
             },
           ],
+          subItem:''
         }
       },
-      props:['title','category','services','products']
+      props:['title','category','services','products'],
     }
 </script>
 
