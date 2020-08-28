@@ -2,16 +2,19 @@
   <div class="col-12 d-flex p-0 mb-3 line position-relative d-flex justify-content-between">
       <h2 class="title pb-2 m-0 text-right position-relative pl-5">
         {{title}}
-      <span v-if="subItem">( {{subItem}} )</span>
+      <span v-if="subItem && subItem!=='all'">( {{subItem}} )</span>
       </h2>
-      <div v-if="show"><a> نمایش همه</a></div>
+    <div v-if="show">
+      <nuxt-link v-if="subItem" :to="`/${link}/${subItem}`"> نمایش همه</nuxt-link>
+      <nuxt-link v-else :to="`/${link}`"> نمایش همه</nuxt-link>
+    </div>
   </div>
 </template>
 
 <script>
     export default {
         name: "index",
-        props:['title','show','subItem']
+        props:['title','show','subItem','link']
     }
 </script>
 

@@ -5,7 +5,7 @@
     </div>
     <div class="col-12 col-md-10 px-0 pr-md-2 mt-3 mt-md-0">
       <div class="customShadow d-flex flex-column bg-white p-4">
-        <Title :title="title" :subItem="subItem" show="true"/>
+        <Title :title="title" :subItem="subItem" show="true" :link="services ? 'services' : 'products/category'"/>
         <carousel  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1], [1024, 4]]" :pagination-enabled="true" :navigation-enabled="true">
           <slide v-for="item in services" :key="item.id" v-if="services">
             <service-item :item="item"/>
@@ -23,60 +23,18 @@
     import RightSidebar from '@/components/rightSideBar'
     import Title from '@/components/title'
     import ServiceItem from '@/components/serviceItem'
+    import Product from '@/components/product'
     export default {
       name: "index",
       components:{
         RightSidebar,
         Title,
-        ServiceItem
+        ServiceItem,
+        Product
       },
       data(){
         return{
-          serviceCategory: [
-            {
-              name:'تاسیساتی',
-              subCategory:['بهینه سازی سیستم آب','تعویض موتور پمپ','تعمیر موتور خانه']
-            },
-            {
-              name:'حفر چاه',
-              subCategory:[],
-            },
-          ],
-          services:[
-            {
-              photo:'service1.jpg',
-              title:'تعمیر موتورخانه'
-            },
-            {
-              photo:'service2.jpg',
-              title:'لوله کشی ساختمان'
-            },
-            {
-              photo:'service3.jpg',
-              title:'حفر چاه'
-            },
-            {
-              photo:'service4.jpg',
-              title:'تعمیر شوفاژ'
-            },
-            {
-              photo:'service1.jpg',
-              title:'تعمیر موتورخانه'
-            },
-            {
-              photo:'service2.jpg',
-              title:'لوله کشی ساختمان'
-            },
-            {
-              photo:'service3.jpg',
-              title:'حفر چاه'
-            },
-            {
-              photo:'service4.jpg',
-              title:'تعمیر شوفاژ'
-            },
-          ],
-          subItem:''
+          subItem:'all'
         }
       },
       props:['title','category','services','products'],

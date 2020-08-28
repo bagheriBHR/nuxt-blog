@@ -42,7 +42,7 @@
                   </div>
                 </b-nav-item>
                 <b-nav-item-dropdown :text="link.name" v-else right>
-                  <b-dropdown-item v-for="subLink in link.subMenu" :to="subLink.href">{{subLink.name}}</b-dropdown-item>
+                  <b-dropdown-item v-for="subLink in link.subMenu" :to="`${link.href}/${subLink.name}`">{{subLink.name}}</b-dropdown-item>
                 </b-nav-item-dropdown>
               </div>
             </b-navbar-nav>
@@ -102,7 +102,7 @@
               },
               {
                 name:'محصولات',
-                href:'/category',
+                href:'/products/category',
                 subMenu:[
                   {
                     name:'کولر',
@@ -117,6 +117,14 @@
                     href:''
                   },
                 ]
+              },
+              {
+                name:'خدمات',
+                href:'/services/all'
+              },
+              {
+                name:'نمونه کارها',
+                href:'/portfolio'
               },
               {
                 name:'درباره ما',
@@ -155,7 +163,7 @@
   @media (min-width: 992px) {
     .logo_container::before {
       right: 100px;
-      width: 16%;
+      width: 200px;
       transform: skew(-30deg);
     }
 
