@@ -3,7 +3,7 @@
     <div class="d-flex mx-5 mt-4">
       <div class="col-8 p-0 d-flex">
         <div class="col-9 p-0">
-          <carousel />
+          <landingPageCarousel />
 <!--          <img src="@/assets/img/carousel6.jpg" class="w-100">-->
         </div>
         <div class="col-3 d-flex flex-column justify-content-between h-100">
@@ -32,12 +32,12 @@
 
 <script>
     import PicItem from './picItem'
-    import Carousel from './carousel'
+    import landingPageCarousel from './landingPageCarousel'
     export default {
       name: "index",
       components:{
           PicItem,
-          Carousel
+          landingPageCarousel
       }
     }
 </script>

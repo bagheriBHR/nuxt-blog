@@ -1,5 +1,5 @@
 <template>
-  <div class="col-3">
+  <div class="col-3 px-1">
     <div class="d-flex flex-column align-items-center justify-content-center">
       <img :src="require('@/assets/image/' + imageName)">
       <span class="pt-2 text-center">{{ title }}</span>

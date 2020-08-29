@@ -54,8 +54,18 @@
     left: 30px !important;
     font-weight: normal;
   }
-  .active{
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    background-color: #6f6f6f;
+
+  @media (min-width: 992px) {
+    .active{
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      background-color: #6f6f6f;
+    }
   }
+  @media (max-width: 991px) {
+    .active{
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      background-color: #6f6f6f;
+    }
+  }
+
 </style>

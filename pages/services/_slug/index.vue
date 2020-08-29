@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray col-12 p-0 d-flex flex-column flex-md-row px-2 px-md-5 py-4">
     <div class="col-12 col-md-2 p-0">
-      <RightSidebar :title="title" :category="serviceCategory" @subItemClicked="subItem=$event"/>
+      <RightSidebar title="دسته بندی خدمات" :category="serviceCategory" @subItemClicked="subItem=$event"/>
     </div>
     <div class="col-12 col-md-10 px-0 pr-md-2 mt-3 mt-md-0">
       <div class="customShadow d-flex flex-column bg-white p-4">
@@ -70,12 +70,46 @@
         ],
         serviceCategory: [
           {
+            id:'1',
             name:'تاسیساتی',
-            subCategory:['بهینه سازی سیستم آب','تعویض موتور پمپ','تعمیر موتور خانه']
+            slug:'تاسیساتی',
+            parentId:null,
           },
           {
+            id:'2',
             name:'حفر چاه',
-            subCategory:[],
+            slug:'حفر چاه',
+            parentId:null,
+          },
+          {
+            id:'5',
+            name:'تعمیر موتور خانه',
+            slug:'تعمیر موتور خانه',
+            parentId:'1',
+          },
+          {
+            id:'3',
+            name:'بهینه سازی سیستم آب',
+            slug:'بهینه سازی سیستم آب',
+            parentId:'1',
+          },
+          {
+            id:'4',
+            name:'تعویض موتور پمپ',
+            slug:'تعویض موتور پمپ',
+            parentId:'1',
+          },
+          {
+            id:'6',
+            name:'حفر چاه دستی',
+            slug:'حفر چاه دستی',
+            parentId:'2',
+          },
+          {
+            id:'7',
+            name:'حفر چاه با دستگاه',
+            slug:'حفر چاه با دستگاه',
+            parentId:'2',
           },
         ],
         subItem:''

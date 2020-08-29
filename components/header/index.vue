@@ -6,18 +6,16 @@
       <!--  start of contact information   -->
       <div class="top_header d-flex flex-column flex-md-row align-items-center justify-content-between px-0 px-md-5 py-3">
         <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-start follow mb-3 mb-md-0 p-0">
-          <a><i class="fa fa-instagram"></i></a>
-          <a><i class="fa fa-whatsapp"></i></a>
-          <a><i class="fa fa-telegram"></i></a>
-          <a><i class="fa fa-twitter"></i></a>
-          <a><i class="fa fa-facebook"></i></a>
+          <a v-for="item in websiteInfo.socials" :href="item.src" >
+            <i :class="`fa fa-${item.icon}`"></i>
+          </a>
         </div>
         <div class="col-12 col-md-4 d-none d-md-block justify-content-center p-0">
           <SearchBox />
         </div>
         <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-end p-0 info">
-          <span class="ml-3">info@mysite.com<i class="fa fa-envelope mr-2"></i></span>
-          <span class="">989132924768+<i class="fa fa-phone mr-2"></i></span>
+          <span class="ml-3">{{websiteInfo.email}}<i class="fa fa-envelope mr-2"></i></span>
+          <span class="">{{websiteInfo.phone}}<i class="fa fa-phone mr-2"></i></span>
         </div>
     </div>
       <!--  end of contact information   -->
@@ -26,8 +24,8 @@
       <div class="middle_header mx-0 mx-md-5">
         <b-navbar toggleable="lg" type="light" variant="white" class="p-0">
           <b-navbar-brand href="#" class="logo_container">
-            <img src="@/assets/image/logo.png">
-            <a class="navbar-brand" href="#">نام <span>وب سایت</span></a>
+            <img :src="require('@/assets/image/' + websiteInfo.logoImg)">
+            <a class="navbar-brand" href="#">{{websiteInfo.name}}</a>
           </b-navbar-brand>
 
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -41,41 +39,49 @@
                   <span> {{link.name}}</span>
                   </div>
                 </b-nav-item>
-
                 <b-nav-item-dropdown :text="link.name" v-else right class="menu">
                     <b-dropdown-item  v-for="subLink in link.subMenu" :to="`${link.href}/${subLink.name}`">{{subLink.name}}</b-dropdown-item>
                 </b-nav-item-dropdown>
-
               </div>
             </b-navbar-nav>
 
-            <div class="header_button d-flex justify-content-around bg-orange mx-4 mr-md-auto">
-              <b-nav-item
-                href="#" v-b-modal.modal-no-backdrop class="login position-relative">ورود</b-nav-item>
-              <b-modal id="modal-no-backdrop" size="sm" hide-backdrop content-class="shadow"
-                       header-text-variant="light" title="ورود به سیتم">
-                <b-input-group>
-                  <template v-slot:prepend>
-                    <div class="prependIcon"><i class="fa fa-envelope"></i></div>
+            <!--  NAVBAR BUTTONS  -->
+            <div class="mx-4 mr-md-auto">
+              <div v-if="token">
+                <b-nav-item-dropdown text="نام و نام خانوادگی" class="menu" left>
+                  <b-dropdown-item href="#">محصولات خریداری شده</b-dropdown-item>
+                  <b-dropdown-item href="#">فاکتور خرید</b-dropdown-item>
+                </b-nav-item-dropdown>
+              </div>
+              <div v-else class="header_button d-flex justify-content-around">
+                <b-nav-item
+                  href="#" v-b-modal.modal-no-backdrop class="login position-relative">ورود</b-nav-item>
+                <b-modal id="modal-no-backdrop" size="sm" hide-backdrop content-class="shadow"
+                         header-text-variant="light" title="ورود به سیتم">
+                  <b-input-group>
+                    <template v-slot:prepend>
+                      <div class="prependIcon"><i class="fa fa-envelope"></i></div>
+                    </template>
+                    <b-form-input  size="sm" placeholder="پست الکترونیکی"></b-form-input>
+                  </b-input-group>
+                  <b-input-group class="mt-3">
+                    <template v-slot:prepend>
+                      <div class="prependIcon"><i class="fa fa-lock"></i></div>
+                    </template>
+                    <b-form-input size="sm" placeholder="رمز عبور"></b-form-input>
+                  </b-input-group>
+                  <template v-slot:modal-footer="{ ok }">
+                    <!-- Emulate built in modal footer ok and cancel button actions -->
+                    <b-button size="sm" variant="success" @click="ok()">
+                      ورود
+                    </b-button>
                   </template>
-                  <b-form-input v-model="email" size="sm" placeholder="پست الکترونیکی"></b-form-input>
-                </b-input-group>
-                <b-input-group class="mt-3">
-                  <template v-slot:prepend>
-                    <div class="prependIcon"><i class="fa fa-lock"></i></div>
-                  </template>
-                  <b-form-input v-model="password" size="sm" placeholder="رمز عبور"></b-form-input>
-                </b-input-group>
-                <template v-slot:modal-footer="{ ok }">
-                  <!-- Emulate built in modal footer ok and cancel button actions -->
-                  <b-button size="sm" variant="success" @click="ok()">
-                    ورود
-                  </b-button>
-                </template>
-              </b-modal>
+                </b-modal>
 
-              <b-nav-item href="#">عضویت</b-nav-item>
+                <b-nav-item href="#">عضویت</b-nav-item>
+              </div>
             </div>
+            <!--  END OF NAVBAR BUTTONS  -->
           </b-collapse>
 
           <div class="d-block d-md-none w-100 mx-4 my-3">
@@ -97,6 +103,7 @@
         data() {
           return {
             backgroundUrl,
+            token:false,
             navbarLinks:[
               {
                 name:'صفحه اصلی',
@@ -134,9 +141,38 @@
               },
               {
                 name:'تماس با ما',
-                href:'',
+                href:'#footer',
               },
-            ]
+            ],
+            websiteInfo:{
+              name:'نام وب سایت',
+              logoImg:'logo.png',
+              email:'info@mysite.com',
+              phone:'989132924768+',
+              address:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک',
+              socials:[
+                {
+                  src:'#',
+                  icon:'telegram'
+                },
+                {
+                  src:'#',
+                  icon:'instagram'
+                },
+                {
+                  src:'#',
+                  icon:'whatsapp'
+                },
+                {
+                  src:'#',
+                  icon:'twitter'
+                },
+                {
+                  src:'#',
+                  icon:'facebook'
+                },
+              ]
+            }
           }
        },
       components:{
@@ -259,7 +295,7 @@
   .header_button a {
     color: #fff0e0 !important;
   }
-  .header_button li{
+  li{
     border-bottom: none;
     list-style-type: none;
   }

@@ -1,58 +1,36 @@
 <template>
-    <div>
+    <div id="footer">
       <div class="bg-footer d-flex flex-column">
         <div class="top d-flex justify-content-center p-3">
           <div class="col-12 col-md-8 d-flex">
-            <sale-garantee  imageName="money.png" title="تضمین بهترین قیمت"/>
-            <sale-garantee  imageName="certificate.png" title="ضمانت اصالت کالا"/>
-            <sale-garantee  imageName="maintenance.png" title="خدمات پس از فروش"/>
-            <sale-garantee  imageName="calculator.png" title="خرید اقساطی"/>
+            <sale-garantee v-for="item in garantee"  :imageName="item.image" :title="item.title"/>
           </div>
         </div>
 
         <div class="d-flex flex-column flex-md-row">
           <div class="col-12 col-md-4 d-flex flex-column flex-md-row mt-4">
-            <div class="footer_part col-12 col-md-6 d-flex flex-column">
-              <h2 class="part_title">اطلاعات</h2>
-              <ul class="p-0">
-                <Li title="مقالات"/>
-                <Li title="بلاگ"/>
-                <Li title="تماس با ما"/>
-                <Li title="خدمات پس از فروش"/>
-                <Li title="سوالات متداول"/>
-              </ul>
-            </div>
-            <div class="footer_part col-12 col-md-6 d-flex flex-column">
-              <h2 class="part_title">جدیدترین محصولات</h2>
-              <ul class="p-0">
-                <Li title="محصول 1"/>
-                <Li title="محصول 2"/>
-                <Li title="محصول 3"/>
-                <Li title="محصول 4"/>
-                <Li title="محصول 5"/>
-              </ul>
-            </div>
+            <footer-section title="اطلاعات" :items="info" />
+            <footer-section title="جدیدترین محصولات" :items="products" />
           </div>
+
           <div class="contact_part col-12 col-md-4 d-flex align-items-center position-relative">
-<!--            <div class="pattern position-absolute" :style="{ backgroundImage: `url(${backgroundUrl})` }"></div>-->
             <div class="d-flex flex-column p-3">
               <div class="d-flex">
                 <i class="fa fa-map-marker ml-3"></i>
-                <p class="text-justify">لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک</p>
+                <p class="text-justify">{{websiteInfo.address}}</p>
               </div>
               <div class="d-flex">
                 <i class="fa fa-phone ml-3"></i>
-                <p class="text-justify">تلفن : 09139912691</p>
+                <p class="text-justify">تلفن : {{websiteInfo.phone}}</p>
               </div>
               <div class="d-flex">
                 <i class="fa fa-envelope ml-3"></i>
-                <p class="text-justify mb-0">ایمیل : info@mysite.com</p>
+                <p class="text-justify mb-0">ایمیل : {{websiteInfo.email}}</p>
               </div>
               <div class="d-flex align-items-center justify-content-center mt-4">
-                <a class="follow d-flex align-items-center justify-content-center mx-2"><i class="fa fa-whatsapp"></i></a>
-                <a class="follow d-flex align-items-center justify-content-center mx-2"><i class="fa fa-telegram"></i></a>
-                <a class="follow d-flex align-items-center justify-content-center mx-2"><i class="fa fa-instagram"></i></a>
-                <a class="follow d-flex align-items-center justify-content-center mx-2"><i class="fa fa-facebook"></i></a>
+                <a v-for="item in websiteInfo.socials" :href="item.src" class="follow d-flex align-items-center justify-content-center mx-2">
+                  <i :class="`fa fa-${item.icon}`"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -79,18 +57,124 @@
 </template>
 
 <script>
-    import SaleGarantee from '@/components/footer/saleGarantee'
-    import Li from '@/components/footer/li'
-    import backgroundUrl from '@/assets/image/pattern.png'
-    import { BIcon } from 'bootstrap-vue'
+    import SaleGarantee from './saleGarantee'
+    import FooterSection from './footerSection'
     export default {
         name: "index",
         components:{
           SaleGarantee,
-          Li,
+          FooterSection
       },
       data() {
-        return { backgroundUrl }
+        return {
+          garantee:[
+            {
+              title:'تضمین بهترین قیمت',
+              image:'money.png',
+            },
+            {
+              title:'ضمانت اصالت کالا',
+              image:'certificate.png',
+            },
+            {
+              title:'خدمات پس از فروش',
+              image:'maintenance.png',
+            },
+            {
+              title:'خرید اقساطی',
+              image:'calculator.png',
+            },
+          ],
+          products:[
+            {
+              id:'1',
+              photo:'pr1.png',
+              price:'1000000',
+              content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
+              discount:'900000',
+              name:'نام محصول 1',
+              slug:'نام محصول 1'
+            },
+            {
+              id:'2',
+              photo:'pr2.png',
+              price:'2500000',
+              content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
+              discount:'1900000',
+              name:'نام محصول 2',
+              slug:'نام محصول 2'
+            },
+            {
+              id:'3',
+              photo:'pr3.png',
+              price:'900000',
+              content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
+              discount: '',
+              name:'نام محصول 3',
+              slug:'نام محصول 3'
+            },
+            {
+              id:'4',
+              photo:'pr1.png',
+              price:'3000000',
+              content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
+              discount:'2700000',
+              name:'نام محصول 4',
+              slug:'نام محصول 4'
+            },
+          ],
+          info:[
+            {
+              name:'مقالات',
+              src:'#',
+              slug:'مقالات'
+            },
+            {
+              name:'بلاگ',
+              src:'#',
+              slug:'بلاگ'
+            },
+            {
+              name:'خدمات پس از فروش',
+              src:'#',
+              slug:'خدمات-پس-از-فروش'
+            },
+            {
+              name:'سوالات متداول',
+              src:'#',
+              slug:'سوالات-متداول'
+            },
+          ],
+          websiteInfo:{
+            name:'نام وب سایت',
+            logoImg:'logo.png',
+            email:'info@mysite.com\n',
+            phone:'989132924768+',
+            address:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک',
+            socials:[
+              {
+                src:'#',
+                icon:'telegram'
+              },
+              {
+                src:'#',
+                icon:'instagram'
+              },
+              {
+                src:'#',
+                icon:'whatsapp'
+              },
+              {
+                src:'#',
+                icon:'twitter'
+              },
+              {
+                src:'#',
+                icon:'facebook'
+              },
+            ]
+          }
+        }
       }
     }
 </script>
@@ -99,15 +183,6 @@
   .top{
     background-color: #d6d6d6;
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-  }
-  .part_title{
-    font-size: 0.9rem !important;
-    color: rgba(0,0,0,0.6);
-    text-align: right;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    font-weight: bold;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
   }
   .contact_part{
     box-shadow: 0 6px 8px rgba(0,0,0,0.2);

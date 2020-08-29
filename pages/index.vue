@@ -71,7 +71,7 @@
       <div class="d-flex justify-content-center w-100">
         <h2 class="commentTitle mb-5 position-relative">نظرات شما</h2>
       </div>
-      <carousel  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1], [1024, 3]]" :pagination-enabled="true" :navigation-enabled="true">
+      <carousel  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1],[641, 2], [1024, 3]]" :pagination-enabled="true" :navigation-enabled="true">
         <slide v-for="item in comments" :key="item.id">
           <CommentItem :comment="item"/>
         </slide>
@@ -130,7 +130,8 @@
             price:'1000000',
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'900000',
-            name:'نام محصول 1'
+            name:'نام محصول 1',
+            slug:'نام محصول 1'
           },
           {
             id:'2',
@@ -138,7 +139,8 @@
             price:'2500000',
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'1900000',
-            name:'نام محصول 2'
+            name:'نام محصول 2',
+            slug:'نام محصول 2'
           },
           {
             id:'3',
@@ -146,7 +148,8 @@
             price:'900000',
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount: '',
-            name:'نام محصول 3'
+            name:'نام محصول 3',
+            slug:'نام محصول 3'
           },
           {
             id:'4',
@@ -154,7 +157,8 @@
             price:'3000000',
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'2700000',
-            name:'نام محصول 4'
+            name:'نام محصول 4',
+            slug:'نام محصول 4'
           },
           {
             id:'5',
@@ -162,7 +166,8 @@
             price:'1000000',
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'900000',
-            name:'نام محصول 5'
+            name:'نام محصول 1',
+            slug:'نام محصول 1'
           },
           {
             id:'6',
@@ -170,7 +175,8 @@
             price:'2500000',
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'1900000',
-            name:'نام محصول 6'
+            name:'نام محصول 2',
+            slug:'نام محصول 2'
           },
           {
             id:'7',
@@ -178,7 +184,8 @@
             price:'900000',
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount: '',
-            name:'نام محصول 7'
+            name:'نام محصول 3',
+            slug:'نام محصول 3'
           },
           {
             id:'8',
@@ -186,7 +193,8 @@
             price:'3000000',
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'2700000',
-            name:'نام محصول 8'
+            name:'نام محصول 4',
+            slug:'نام محصول 4'
           },
         ],
         services:[
@@ -225,26 +233,90 @@
         ],
         productCategory: [
           {
+            id:'1',
             name:'کولر',
-            subCategory:['کولرآبی','کولر گازی','کولر ایستاده','کولر تهویه مطبوع','کولر گازی اسپلیت']
+            slug:'کولر',
+            parentId:null,
           },
           {
+            id:'2',
             name:'شوفاژ',
-            subCategory:['شوفاژ پره ای','رادیاتور قرنیزی','رایاتور پنلی','رادیاتور پره ای']
+            slug:'شوفاژ',
+            parentId:null,
           },
           {
-            name:'بخاری',
-            subCategory:['گازی','رادیاتور پره ای']
-          }
+            id:'3',
+            name:'کولرآبی',
+            slug:'کولرآبی',
+            parentId:'1',
+          },
+          {
+            id:'4',
+            name:'کولر گازی',
+            slug:'کولر گازی',
+            parentId:'1',
+          },
+          {
+            id:'5',
+            name:'کولر ایستاده',
+            slug:'کولر ایستاده',
+            parentId:'1',
+          },
+          {
+            id:'7',
+            name:'شوفاژ پره ای',
+            slug:'شوفاژ پره ای',
+            parentId:'2',
+          },
+          {
+            id:'8',
+            name:'رادیاتور قرنیزی',
+            slug:'رادیاتور قرنیزی',
+            parentId:'2',
+          },
         ],
         serviceCategory: [
           {
+            id:'1',
             name:'تاسیساتی',
-            subCategory:['بهینه سازی سیستم آب','تعویض موتور پمپ','تعمیر موتور خانه']
+            slug:'تاسیساتی',
+            parentId:null,
           },
           {
+            id:'2',
             name:'حفر چاه',
-            subCategory:[],
+            slug:'حفر چاه',
+            parentId:null,
+          },
+          {
+            id:'5',
+            name:'تعمیر موتور خانه',
+            slug:'تعمیر موتور خانه',
+            parentId:'1',
+          },
+          {
+            id:'3',
+            name:'بهینه سازی سیستم آب',
+            slug:'بهینه سازی سیستم آب',
+            parentId:'1',
+          },
+          {
+            id:'4',
+            name:'تعویض موتور پمپ',
+            slug:'تعویض موتور پمپ',
+            parentId:'1',
+          },
+          {
+            id:'6',
+            name:'حفر چاه دستی',
+            slug:'حفر چاه دستی',
+            parentId:'2',
+          },
+          {
+            id:'7',
+            name:'حفر چاه با دستگاه',
+            slug:'حفر چاه با دستگاه',
+            parentId:'2',
           },
         ],
         portfolio: [
@@ -275,25 +347,25 @@
           {
             id:'5',
             title: 'تعمیر شوفاژ',
-            photos:['service42.jpg','service4.jpg'],
+            photos:['service4.jpg','service42.jpg'],
             date:'3/4/99'
           },
           {
             id:'6',
             title: 'حفر چاه',
-            photos:['service32.jpg','service3.jpg'],
+            photos:['service3.jpg','service32.jpg'],
             date:'3/4/99'
           },
           {
             id:'7',
             title: 'لوله کشی ساختمان',
-            photos:['service22.jpg','service2.jpg'],
+            photos:['service2.jpg','service22.jpg'],
             date:'3/4/99'
           },
           {
             id:'8',
             title: 'تعمیر موتور',
-            photos:['service12.jpg','service1.jpg'],
+            photos:['service1.jpg','service12.jpg'],
             date:'3/4/99'
           },
         ],
@@ -522,5 +594,8 @@
   }
   .customShadow{
     box-shadow: 0 0 3px rgba(0,0,0,0.1);
+  }
+  .VueCarousel-wrapper {
+    padding-bottom: 15px !important;
   }
 </style>

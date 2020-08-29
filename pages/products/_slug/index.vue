@@ -1,61 +1,65 @@
 <template>
   <div class="bg-gray col-12 d-flex flex-column px-2 px-md-5 py-4">
     <div class="d-flex">
-      <div class="d-flex flex-column col-12 col-md-2 p-0">
-        <RightSidebar title="دسته بندی محصولات" :category="productCategory"/>
-      </div>
-      <div class="col-12 col-md-10 px-0 pr-md-2 mt-3 mt-md-0">
-        <div class="customShadow d-flex flex-column bg-white p-4">
+      <div class="col-12 col-md-9 px-0 mt-3 mt-md-0">
+        <div class="customShadow d-flex flex-column bg-white p-3">
           <div class="d-flex flex-column flex-md-row mb-3">
-            <div class="col-12 col-md-7 d-flex border-left p-0" dir="ltr">
+            <div class="col-12 col-md-6 d-flex border-left p-0" dir="ltr">
               <div class="w-100">
                 <b-card no-body>
                   <b-tabs vertical end>
-                    <b-tab active>
+                    <b-tab v-for="item in productInfo.images">
                       <template v-slot:title>
-                        <img src="@/assets/image/pr1.png">
+                        <img :src="require('@/assets/image/' + item)">
                       </template>
-                      <b-card-img src="@/assets/image/pr1.png"/>
+                      <b-card-img :src="require('@/assets/image/' + item)"/>
                     </b-tab>
-                    <b-tab title="Tab 2">
-                      <template v-slot:title>
-                        <img src="@/assets/image/pr2.png">
-                      </template>
-                      <b-card-img src="@/assets/image/pr2.png"/></b-tab>
-                    <b-tab title="Tab 3">
-                      <template v-slot:title>
-                        <img src="@/assets/image/pr3.png">
-                      </template>
-                      <b-card-img src="@/assets/image/pr3.png"/></b-tab>
                   </b-tabs>
                 </b-card>
               </div>
             </div>
-            <div class="col-12 col-md-5">
-              <div class="info d-flex flex-column align-items-start w-100 pb-2">
-                <h3 class="mb-4">{{$route.params.slug}}</h3>
-                <div class="d-flex flex-row">
-                  <h4>برند : <span>نام برند</span></h4>
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-between">
+              <div>
+                <div class="info d-flex flex-column align-items-start w-100 pb-2">
+                  <h3 class="mb-4">{{$route.params.slug}}</h3>
+                  <div class="d-flex flex-column">
+                    <h4>برند : <span>{{productInfo.brand}}</span></h4>
+                    <h4 class="mt-2">رنگ : <span>{{productInfo.color}}</span></h4>
+                  </div>
+                </div>
+                <div class="d-flex flex-column mt-4 align-items-start">
+                  <span class="mb-2">گارانتی : {{productInfo.garantee.name}}</span>
+                  <span class="mb-2">شرایط گارانتی : {{productInfo.garantee.condition}}</span>
+                  <span>خدمات پس از فروش : {{productInfo.garantee.saleService}}</span>
+                </div>
+                <div class="price d-flex flex-column justify-content-center">
+                  <div class="d-flex mt-4 align-items-center">
+                    <h4 class="mb-0">قیمت :  </h4>
+                    <div v-if="productInfo.discount_price===0"><h5 class="mb-0 mr-2">{{productInfo.price}} تومان</h5></div>
+                    <div class="d-flex align-items-center" v-else>
+                      <span class="mx-2 ">{{productInfo.price}} تومان</span>
+                      <h5 class="mb-0 mr-2 py-2 px-3">{{productInfo.discount_price}} تومان</h5>
+                      </div>
+                  </div>
                 </div>
               </div>
-              <div class="color d-flex flex-row align-items-center mt-3">
-                <h4 class="mb-0">رنگ : </h4>
-                <div class="mx-2"></div>
-                <h5 class="mb-0">مشکی</h5>
-              </div>
-              <div class="price d-flex flex-column justify-content-center">
-                <div class="d-flex mt-4">
-                  <h4 class="mb-0">قیمت :  </h4>
-                  <h5 class="mb-0 mr-2">2600000<span class="ml-2 text-danger">3000000</span> تومان</h5>
+              <div class="top d-flex justify-content-center border-top mt-4">
+                <div class="d-flex justify-content-around pt-3 w-100">
+                  <sale-garantee v-for="item in garantee"  :imageName="item.image" :title="item.title"/>
                 </div>
-              </div>
-              <div class="properties d-flex flex-column text-right mt-4 pt-3">
-                <h4>ویژگی های محصول</h4>
-                <ul class="pr-4">
-                  <li>حجم کولر : 2800</li>
-                </ul>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column col-12 col-md-3 p-0 pr-md-2 ">
+        <div class="bg-white customShadow p-3 h-100">
+          <div class="properties d-flex flex-column text-right">
+            <p class="text-justify">لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر</p>
+            <h4>ویژگی های محصول</h4>
+            <ul class="pr-4">
+              <li v-for="item in productInfo.properties">{{item}}</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -129,11 +133,13 @@
 <script>
   import RightSidebar from '@/components/rightSideBar'
   import CommentItem from '@/components/singlePage/commentItem'
+  import SaleGarantee from '@/components/footer/saleGarantee'
   export default {
     name: "index",
     components:{
       RightSidebar,
       CommentItem,
+      SaleGarantee
     },
     data() {
       return {
@@ -237,28 +243,68 @@
             body:'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. '
           },
         ],
-        productAttributes:[
+        productInfo:{
+          images:['pr1.png','pr2.png','pr3.png',],
+          brand:'نام برند',
+          color:'مشکی',
+          price:'300000',
+          discount_price:290000,
+          Attributes:[
+            {
+              name:'حجم کولر',
+              value:'2800'
+            },
+            {
+              name:'میزان ورودی آب',
+              value:'1/4 اینچ'
+            },
+            {
+              name:'ولتاژ ورودی برق',
+              value:'220'
+            },
+            {
+              name:'قدرت پمپ',
+              value:'6/1 HP'
+            },
+            {
+              name:'قدرت موتور',
+              value:'1/8 اسب بخار'
+            },
+          ],
+          properties:[
+            'عملکرد: سرمايش و گرمایش',
+            'برای مساحت 55 تا 75 متر مربع (براساس شرایط)',
+            'دارای فیلتر پلی پروپیلن و صفحه نمایش دیجیتال',
+            'تنظیم اتومات پرتاب باد عمودی و افقی',
+            'حداکثر فاصله افقی پنل داخلی با بیرونی: 30 متر',
+            'قابلیت کارکرد در مناطق معتدل و حاره ای',
+            'دارای گاز مبرد R410a و کمپرسور روتاری',
+            'نصب رایگان',
+          ],
+          garantee:{
+            name:'5 سال گارنتی شرکت اصلی',
+            condition:'5 سال ضمانت كمپرسور و 18 ماه گارانتی قطعات فنی',
+            saleService:'10 سال',
+          }
+        },
+        garantee:[
           {
-            name:'حجم کولر',
-            value:'2800'
+            title:'تضمین بهترین قیمت',
+            image:'money.png',
           },
           {
-            name:'میزان ورودی آب',
-            value:'1/4 اینچ'
+            title:'ضمانت اصالت کالا',
+            image:'certificate.png',
           },
           {
-            name:'ولتاژ ورودی برق',
-            value:'220'
+            title:'خدمات پس از فروش',
+            image:'maintenance.png',
           },
           {
-            name:'قدرت پمپ',
-            value:'6/1 HP'
+            title:'خرید اقساطی',
+            image:'calculator.png',
           },
-          {
-            name:'قدرت موتور',
-            value:'1/8 اسب بخار'
-          },
-        ]
+        ],
       }
     },
   }
@@ -310,21 +356,29 @@
   }
   .price h5{
     font-size: 1rem;
-    color: #1b6a6f;
+    font-weight: bold;
+    color: #fff;
+    background-color: $orange;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
   }
   .price span{
     text-decoration: line-through;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    color: #1b6a6f;
+    font-weight: bold;
   }
-  .properties{
-    border-top: 1px solid #e0e0e0;
+  .properties p{
+    color: rgba(0,0,0,0.6);
+    font-size: 0.7rem;
   }
   .properties h4{
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   .properties ul li{
-    font-size: 0.9rem;
-    list-style-type: disk;
+    font-size: 0.7rem;
+    list-style-type:circle;
+    padding: 5px 0;
   }
 
   /* description */

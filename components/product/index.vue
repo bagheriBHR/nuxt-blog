@@ -6,7 +6,7 @@
           {{discount_price}}%
         </div>
         <img :src="require('@/assets/image/' + product.photo)" class="">
-        <nuxt-link :to="`/products/${product.name}`" class="position-absolute btn"> اطلاعات بیشتر</nuxt-link>
+        <nuxt-link :to="`/products/${product.slug}`" class="position-absolute btn"> اطلاعات بیشتر</nuxt-link>
       </div>
       <div class="content_bg d-flex flex-column align-items-start px-3 pt-3">
         <h3 class="price mt-1">{{product.price}} تومان</h3>

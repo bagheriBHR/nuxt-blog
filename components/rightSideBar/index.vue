@@ -4,15 +4,15 @@
     <div class="d-flex flex-column align-item-start w-100">
 
       <div v-if="category">
-        <b-card no-body class="mb-1" v-for="item in category" :key="item.name">
+        <b-card no-body class="mb-1" v-for="item in category" v-if="item.parentId===null" :key="item.id">
           <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button block v-b-toggle="'accordion-'+item.name" variant="white">{{item.name}}</b-button>
+            <b-button block v-b-toggle="'accordion-'+item.id" variant="white">{{item.name}}</b-button>
           </b-card-header>
-          <b-collapse :id="'accordion-'+item.name" accordion="my-accordion" role="tabpanel">
+          <b-collapse :id="'accordion-'+item.id" accordion="my-accordion" role="tabpanel">
             <b-card-body>
               <b-card-text>
                 <ul class="pr-1">
-                  <li v-for="subItem in item.subCategory" :key="subItem"><button @click="subItemClicked(subItem)"> {{subItem}}</button></li>
+                  <li v-for="subItem in category" v-if="item.id===subItem.parentId" :key="subItem.id"><button @click="subItemClicked(subItem.slug)"> {{subItem.name}}</button></li>
                 </ul>
               </b-card-text>
             </b-card-body>
@@ -28,8 +28,8 @@
       name: "index",
       props:['title','category','attributeGroup'],
       methods:{
-        subItemClicked(subItemName){
-          this.$emit('subItemClicked',subItemName)
+        subItemClicked(slug){
+          this.$emit('subItemClicked',slug)
         }
       }
     }

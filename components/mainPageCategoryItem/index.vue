@@ -6,7 +6,7 @@
     <div class="col-12 col-md-10 px-0 pr-md-2 mt-3 mt-md-0">
       <div class="customShadow d-flex flex-column bg-white p-4">
         <Title :title="title" :subItem="subItem" show="true" :link="services ? 'services' : 'products/category'"/>
-        <carousel  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1], [1024, 4]]" :pagination-enabled="true" :navigation-enabled="true">
+        <carousel  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1],[641, 2], [1024, 4]]" :pagination-enabled="true" :navigation-enabled="true">
           <slide v-for="item in services" :key="item.id" v-if="services">
             <service-item :item="item"/>
           </slide>
