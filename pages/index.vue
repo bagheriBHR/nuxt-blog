@@ -1,25 +1,7 @@
 <template>
   <div class="bg-gray d-flex flex-column">
-
 <!--  CAROUSEL   -->
-    <div class="d-none d-md-block">
-      <div class="d-flex mx-5 mt-4">
-        <div class="col-8 p-0 d-flex">
-          <div class="col-9 p-0">
-            <img src="@/assets/img/carousel6.jpg" class="w-100">
-          </div>
-          <div class="col-3 d-flex flex-column justify-content-between h-100">
-            <div class="col p-0"><img src="@/assets/img/carousel1.jpg" class="w-100 h-100"></div>
-            <div class="col px-0 pt-2"><img src="@/assets/img/carousel2.jpg" class="w-100 h-100"></div>
-            <div class="col px-0 pt-2"><img src="@/assets/img/carousel3.jpg" class="w-100 h-100"></div>
-          </div>
-        </div>
-        <div class="col-4 d-flex flex-column justify-content-between p-0">
-          <img src="@/assets/img/carousel4.jpg" class="w-100" style="height: 66%">
-          <img src="@/assets/img/carousel5.jpg" class="w-100 mt-2">
-        </div>
-      </div>
-    </div>
+    <landing-page/>
 <!--  END OF CAROUSEL   -->
 
 <!--    TOP SERVICES   -->
@@ -50,13 +32,9 @@
     <div class="customShadow d-flex flex-column mx-2 mx-md-5 bg-white p-4 my-4">
       <Title title="نمونه کار" show="true" link="portfolio"/>
       <div class="d-flex flex-wrap mb-4">
-<!--        <carousel  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1], [1024, 3]]" :pagination-enabled="true" :navigation-enabled="true">-->
-<!--          <slide v-for="item in portfolio" :key="item.id">-->
         <div class="col-12 col-md-3 mt-4" v-for="item in portfolio" :key="item.id">
           <portfolioCarousel :title="item.title" :photos="item.photos" :date="item.date"/>
         </div>
-<!--          </slide>-->
-<!--        </carousel>-->
       </div>
     </div>
 <!--    end of portfolio  -->
@@ -95,9 +73,7 @@
       </div>
       <carousel  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1], [1024, 3]]" :pagination-enabled="true" :navigation-enabled="true">
         <slide v-for="item in comments" :key="item.id">
-<!--        <div class="d-flex flex-column flex-md-row" >-->
           <CommentItem :comment="item"/>
-<!--        </div>-->
         </slide>
       </carousel>
     </div>
@@ -106,6 +82,7 @@
 </template>
 
 <script>
+  import LandingPage from '@/components/landingPage'
   import Service from '@/components/services'
   import portfolioCarousel from '@/components/portfolioCarousel'
   import TeamItem from '@/components/aboutUsTeamItem'
@@ -114,6 +91,7 @@
   import CategoryItem from '@/components/mainPageCategoryItem'
   export default {
     components:{
+      LandingPage,
       Service,
       portfolioCarousel,
       TeamItem,
@@ -525,6 +503,7 @@
     font-size: 1.2rem;
     color: $title;
   }
+
 </style>
 <style lang="scss">
   .VueCarousel-navigation-button{

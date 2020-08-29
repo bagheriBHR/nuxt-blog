@@ -41,9 +41,11 @@
                   <span> {{link.name}}</span>
                   </div>
                 </b-nav-item>
-                <b-nav-item-dropdown :text="link.name" v-else right>
-                  <b-dropdown-item v-for="subLink in link.subMenu" :to="`${link.href}/${subLink.name}`">{{subLink.name}}</b-dropdown-item>
+
+                <b-nav-item-dropdown :text="link.name" v-else right class="menu">
+                    <b-dropdown-item  v-for="subLink in link.subMenu" :to="`${link.href}/${subLink.name}`">{{subLink.name}}</b-dropdown-item>
                 </b-nav-item-dropdown>
+
               </div>
             </b-navbar-nav>
 

@@ -22,7 +22,11 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel : "stylesheet",
+        href : "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+      }
     ]
   },
   /*
@@ -39,7 +43,7 @@ export default {
   */
   plugins: [
     { src: '~plugins/vue-carousel', ssr: false },
-    { src: '~plugins/vue-zoom', ssr: false }
+    { src: '~plugins/zoomOnHover', ssr: false }
   ],
   /*
   ** Auto import components
