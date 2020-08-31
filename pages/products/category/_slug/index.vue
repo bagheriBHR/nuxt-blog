@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import Sidebar from '@/components/categorySideBar'
+  import Sidebar from '@/components/categorySidebar'
   export default {
     name: "index",
     data(){

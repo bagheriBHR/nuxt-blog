@@ -10,7 +10,7 @@
         <div class="d-flex flex-column flex-md-row">
           <div class="col-12 col-md-4 d-flex flex-column flex-md-row mt-4">
             <footer-section title="اطلاعات" :items="info" />
-            <footer-section title="جدیدترین محصولات" :items="products" />
+            <footer-section title="جدیدترین محصولات" :items="products" path="/products/"/>
           </div>
 
           <div class="contact_part col-12 col-md-4 d-flex align-items-center position-relative">

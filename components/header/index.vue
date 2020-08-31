@@ -53,10 +53,10 @@
                   <b-dropdown-item href="#">فاکتور خرید</b-dropdown-item>
                 </b-nav-item-dropdown>
               </div>
-              <div v-else class="header_button d-flex justify-content-around">
+              <div v-else class="header_button d-flex justify-content-around bg-orange">
                 <b-nav-item
                   href="#" v-b-modal.modal-no-backdrop class="login position-relative">ورود</b-nav-item>
-                <b-modal id="modal-no-backdrop" size="sm" hide-backdrop content-class="shadow"
+                <b-modal id="modal-no-backdrop"  hide-backdrop content-class="shadow"
                          header-text-variant="light" title="ورود به سیتم">
                   <b-input-group>
                     <template v-slot:prepend>
@@ -330,6 +330,9 @@
       padding: 0px;
       box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
     }
+    .dropdown-item{
+      border-bottom: 1px solid #eeeeee;
+    }
   }
   @media (max-width: 991px) {
     .nav-link{
@@ -338,6 +341,7 @@
     }
     .dropdown-item{
       text-align: right;
+      border-bottom: 1px solid #f5bba1;
     }
     .dropdown-menu{
       margin-right: 15px;
@@ -354,7 +358,6 @@
   .dropdown-item{
     color: rgba(0,0,0,0.7);
     font-size: 0.9rem;
-    border-bottom: 1px solid #eee;
     padding: 10px;
     padding-right: 15px;
   }
@@ -367,6 +370,9 @@
   }
   .modal-title{
     font-size: 1rem !important;
+  }
+  .modal-content{
+    margin-top:120px !important ;
   }
   .modal-content , .modal-header{
     border-radius: 1px !important;

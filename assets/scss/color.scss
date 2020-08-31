@@ -20,3 +20,6 @@ $blue:#413d77;
 .VueCarousel-wrapper{
   padding-bottom: 15px !important;
 }
+.custom-control-label::after{
+  right: -1.5rem !important;
+}

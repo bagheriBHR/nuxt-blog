@@ -2,7 +2,7 @@
   <div class="footer_part col-12 col-md-6 d-flex flex-column">
     <h2 class="part_title">{{title}}</h2>
     <ul class="p-0">
-      <Li v-for="item in items" :slug="item.slug" :path="item.path">
+      <Li v-for="item in items" :slug="item.slug" :path="path">
         {{item.name}}
       </Li>
     </ul>
@@ -13,7 +13,7 @@
     import Li from '@/components/footer/li'
     export default {
       name: "index",
-      props:['items','title'],
+      props:['items','title','path'],
       components:{
         Li
       }

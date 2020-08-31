@@ -6,9 +6,9 @@
       <div v-if="category">
         <b-card no-body class="mb-1" v-for="item in category" v-if="item.parentId===null" :key="item.id">
           <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button block v-b-toggle="'accordion-'+item.id" variant="white">{{item.name}}</b-button>
+            <b-button block v-b-toggle="'accordion-'+item.slug" variant="white">{{item.name}}</b-button>
           </b-card-header>
-          <b-collapse :id="'accordion-'+item.id" accordion="my-accordion" role="tabpanel">
+          <b-collapse :id="'accordion-'+item.slug" accordion="my-accordion" role="tabpanel">
             <b-card-body>
               <b-card-text>
                 <ul class="pr-1">

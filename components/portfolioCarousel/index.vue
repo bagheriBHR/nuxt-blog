@@ -22,6 +22,14 @@
 </script>
 
 <style>
+  @media (min-width: 992px) {
+    .customCarousel .hover {
+      opacity: 0;
+    }
+    .customCarousel .VueCarousel-navigation-prev ,.customCarousel .VueCarousel-navigation-next{
+      opacity: 0 !important;
+    }
+  }
   .customCarousel .VueCarousel-wrapper{
     padding-bottom: 0 !important;
   }
@@ -35,7 +43,6 @@
     left: 0;
     width: 100%;
     height: 40px;
-    opacity: 0;
   }
   .customCarousel .hover p{
     color: #fff;
@@ -52,7 +59,6 @@
   .customCarousel .VueCarousel-navigation-prev ,.customCarousel .VueCarousel-navigation-next{
     background-color: rgba(0,0,0,0.5) !important;
     transform: translateY(-50%) translateX(0%) !important;
-    opacity: 0 !important;
     color: #fff !important;
     transition: all 0.3s ease-in-out;
     font-size: 0.8rem !important;
