@@ -2,7 +2,7 @@
   <div class="commentcard w-100 d-flex flex-column align-items-start p-3 mb-5">
     <h4 class="mb-3">{{comment.product}}</h4>
     <h5 class="mb-2 pb-2">توسط {{comment.name}} در تاریخ {{comment.date}}</h5>
-    <p>{{comment.body}}</p>
+    <p class="text-justify">{{comment.body}}</p>
   </div>
 </template>
 

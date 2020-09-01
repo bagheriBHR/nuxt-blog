@@ -41,6 +41,11 @@
 </script>
 
 <style lang="scss" scoped>
+  @media (min-width: 992px) {
+    .btn{
+      opacity: 0;
+    }
+  }
   .product_item{
     box-shadow: 0 0 2px rgba(0,0,0,0.2);
     height: 100% !important;
@@ -60,7 +65,6 @@
     border-radius: 2px;
     font-size: 0.7rem;
     transition: all 0.3s ease-in-out;
-    opacity: 0;
     width: 80%;
     font-weight: bold;
   }

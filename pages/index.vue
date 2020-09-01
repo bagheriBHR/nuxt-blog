@@ -71,7 +71,7 @@
       <div class="d-flex justify-content-center w-100">
         <h2 class="commentTitle mb-5 position-relative">نظرات شما</h2>
       </div>
-      <carousel  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1],[641, 2], [1024, 3]]" :pagination-enabled="true" :navigation-enabled="true">
+      <carousel :rtl="true" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1],[641, 2], [1024, 3]]" :pagination-enabled="true" :navigation-enabled="true">
         <slide v-for="item in comments" :key="item.id">
           <CommentItem :comment="item"/>
         </slide>

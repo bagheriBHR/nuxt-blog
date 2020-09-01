@@ -6,12 +6,12 @@
     <div class="col-12 col-md-10 px-0 pr-md-2 mt-3 mt-md-0">
       <div class="customShadow d-flex flex-column bg-white p-4">
         <Title :title="title" :subItem="subItem" show="true" :link="services ? 'services/category' : 'products/category'"/>
-        <carousel v-if="services"  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1],[641, 2], [1024, 4]]" :pagination-enabled="true" :navigation-enabled="true">
+        <carousel v-if="services"  :rtl="true" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1],[641, 2], [1024, 4]]" :pagination-enabled="true" :navigation-enabled="true">
           <slide v-for="item in services" :key="item.id" v-if="subItemId==='' || item.category_id===subItemId">
             <service-item :item="item"/>
           </slide>
         </carousel>
-        <carousel v-if="products"  dir="ltr" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1],[641, 2], [1024, 4]]" :pagination-enabled="true" :navigation-enabled="true">
+        <carousel v-if="products"  :rtl="true" navigationNextLabel="<i class='fa fa-angle-right'></i>" navigationPrevLabel="<i class='fa fa-angle-left'></i>" :perPageCustom="[[0, 1],[641, 2], [1024, 4]]" :pagination-enabled="true" :navigation-enabled="true">
           <slide v-for="item in products"  :key="item.id" class="px-md-1" v-if="subItemId==='' || item.category_id===subItemId">
             <Product :product="item" />
           </slide>

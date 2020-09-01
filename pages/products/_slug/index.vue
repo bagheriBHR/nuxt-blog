@@ -1,10 +1,10 @@
 <template>
   <div class="bg-gray col-12 d-flex flex-column px-2 px-md-5 py-4">
-    <div class="d-flex">
+    <div class="d-flex flex-wrap">
       <div class="col-12 col-md-9 px-0 mt-3 mt-md-0">
         <div class="customShadow d-flex flex-column bg-white p-3">
           <div class="d-flex flex-column flex-md-row mb-3">
-            <div class="col-12 col-md-6 d-flex border-left p-0" dir="ltr">
+            <div class="col-12 col-md-6 d-flex border_left p-0" dir="ltr">
               <div class="w-100">
                 <b-card no-body>
                   <b-tabs vertical end>
@@ -18,7 +18,7 @@
                 </b-card>
               </div>
             </div>
-            <div class="col-12 col-md-6 d-flex flex-column justify-content-between">
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-between mt-3 mt-md-0">
               <div>
                 <div class="info d-flex flex-column align-items-start w-100 pb-2">
                   <h3 class="mb-4">{{$route.params.slug}}</h3>
@@ -28,9 +28,9 @@
                   </div>
                 </div>
                 <div class="d-flex flex-column mt-4 align-items-start">
-                  <span class="mb-2">گارانتی : {{productInfo.garantee.name}}</span>
-                  <span class="mb-2">شرایط گارانتی : {{productInfo.garantee.condition}}</span>
-                  <span>خدمات پس از فروش : {{productInfo.garantee.saleService}}</span>
+                  <span class="mb-2 text-justify">گارانتی : {{productInfo.garantee.name}}</span>
+                  <span class="mb-2 text-justify">شرایط گارانتی : {{productInfo.garantee.condition}}</span>
+                  <span class="text-justify">خدمات پس از فروش : {{productInfo.garantee.saleService}}</span>
                 </div>
                 <div class="price d-flex flex-column justify-content-center">
                   <div class="d-flex mt-4 align-items-center">
@@ -52,7 +52,7 @@
           </div>
         </div>
       </div>
-      <div class="d-flex flex-column col-12 col-md-3 p-0 pr-md-2 ">
+      <div class="d-flex flex-column col-12 col-md-3 p-0 pr-md-2 mt-3 mt-md=0">
         <div class="bg-white customShadow p-3 h-100">
           <div class="properties d-flex flex-column text-right">
             <p class="text-justify">لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر</p>
@@ -68,21 +68,21 @@
     <!--    DESCRIPTION TABS   -->
     <div class="mt-3">
       <b-card no-body>
-        <b-tabs card>
+        <b-tabs card >
           <b-tab title="معرفی محصول" active>
             <b-card-text class="text-justify">لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را ندارند و در همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند</b-card-text>
           </b-tab>
           <b-tab title="مشخصات محصول">
             <b-card-text>
               <div class="d-flex">
-                <div class="col-4">
+                <div class="col-6 px-0 px-md-1">
                   <ul class="text-right pr-0">
-                    <li class="py-2" v-for="item in productAttributes"><a href="#" class="my-2 py-2 px-1">{{item.name}}</a> </li>
+                    <li class="py-2" v-for="item in productInfo.attributes"><a href="#" class="my-2 py-2 px-1">{{item.name}}</a> </li>
                   </ul>
                 </div>
-                <div class="col-8">
+                <div class="col-6 px-0 px-md-1">
                   <ul class="text-right pr-0">
-                    <li class="py-2" v-for="item in productAttributes"><a href="#" class="my-2 py-2 px-1">{{item.value}}</a></li>
+                    <li class="py-2" v-for="item in productInfo.attributes"><a href="#" class="my-2 py-2 px-1">{{item.value}}</a></li>
                   </ul>
                 </div>
               </div>
@@ -91,7 +91,7 @@
           <b-tab title="نظرات شما">
             <b-card-text>
               <div class="comment d-flex flex-column">
-                <h4 class="mb-5 text-right">دیدگاه ها</h4>
+                <h4 class="mb-3 text-right">دیدگاه ها</h4>
                 <div class="d-flex flex-column W-100" v-for="item in comments">
                   <CommentItem :comment="item"/>
                 </div>
@@ -100,7 +100,7 @@
                 </div>
                 <h5 class="mb-3 text-right">شما هم می توانید در مورد این کالا نظر بدهید.</h5>
                 <h5 class="font-weight-normal mb-3 text-right">جهت ثبت نظر، وارد وب سایت شوید.</h5>
-                <form class="text-left w-50">
+                <form class="col-12 col-md-6 p-0 text-left">
                   <input type="email" class="form-control form-control-sm" id="inputEmail4" placeholder="عنوان نظر خود را وارد کنید."/>
                   <input type="text" class="form-control form-control-sm my-3" id="inputAddress" placeholder="ایمیل خودرا وارد کنید."/>
                   <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="4" placeholder="دیدگاه خود را وارد کنید"></textarea>
@@ -132,7 +132,7 @@
 
 <script>
   import RightSidebar from '@/components/rightSideBar'
-  import CommentItem from '@/components/singlePage/commentItem'
+  import CommentItem from '@/components/productCommentItem'
   import SaleGarantee from '@/components/footer/saleGarantee'
   export default {
     name: "index",
@@ -249,7 +249,7 @@
           color:'مشکی',
           price:'300000',
           discount_price:290000,
-          Attributes:[
+          attributes:[
             {
               name:'حجم کولر',
               value:'2800'
@@ -311,6 +311,11 @@
 </script>
 
 <style lang="scss" scoped>
+  @media (min-width: 992px) {
+    .border_left{
+      border-left: 1px solid #e5e5e5;
+    }
+  }
   .nav-link{
     background-color: #fff !important;
   }
@@ -416,7 +421,7 @@
   }
   /* comment */
   .comment h4{
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   .comment h5{
     font-size: 1rem;
@@ -450,6 +455,14 @@
   }
 </style>
 <style lang="scss">
+  @media (max-width: 991px) {
+    .card-text{
+      padding: 0px !important;
+    }
+    .card-header-tabs{
+      padding-right: 0px !important;
+    }
+  }
   .nav-tabs .nav-link{
     color:$title  !important;
   }
