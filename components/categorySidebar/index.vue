@@ -34,15 +34,17 @@
         </b-card-header>
         <b-collapse id="accordion-price" accordion="my-accordion" role="tabpanel">
           <b-card-body class="p-0">
-            <b-card-text>
-              <form method="post" >
-                <div data-role="rangeslider">
-                  <label for="price-min">Price:</label>
-                  <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
-                  <label for="price-max">Price:</label>
-                  <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
-                </div>
-              </form>
+            <b-card-text class="p-2">
+              <range-slider
+                class="slider"
+                min="10"
+                max="1000"
+                step="10"
+                v-model="sliderValue">
+              </range-slider>
+              <div class="d-flex justify-content-center slider">
+                <h6 class="px-2 py-1 my-2 bg-gray text-dark">{{sliderValue}} تومان</h6>
+              </div>
             </b-card-text>
           </b-card-body>
         </b-collapse>
@@ -51,6 +53,9 @@
 </template>
 
 <script>
+  import RangeSlider from 'vue-range-slider'
+  // you probably need to import built-in style
+  import 'vue-range-slider/dist/vue-range-slider.css'
   export default {
     name: "index",
     props:['attributeGroup','price'],
@@ -60,7 +65,11 @@
         options: [],
         filterText:'',
         items:[],
+        sliderValue: 50
       }
+    },
+    components:{
+      RangeSlider
     },
     computed:{
       filter(){
@@ -145,6 +154,13 @@
   .itemContainer{
     max-height: 200px;
     overflow-y: scroll;
+  }
+  .range-slider{
+    width: 100%;
+  }
+  .slider h6{
+    font-size: 0.9rem;
+    font-weight: bold;
   }
 </style>
 <style>
