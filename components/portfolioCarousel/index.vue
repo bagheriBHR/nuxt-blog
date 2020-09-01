@@ -1,23 +1,26 @@
 <template>
+
   <div class=" customCarousel position-relative" dir="ltr">
-    <carousel :per-page="1" :pagination-enabled="false" :navigation-enabled="true">
-      <slide v-for="photo in photos" :key="photo">
-        <img :src="require('@/assets/img/' + photo)" class="w-100">
-      </slide>
-    </carousel>
-    <div class="content position-absolute d-flex align-items-center justify-content-end">
-      <p class="m-0 pr-3">{{title}}</p>
-    </div>
-    <div class="hover position-absolute d-flex align-items-center justify-content-start">
-      <p class="m-0 pl-3">{{date}}</p>
-    </div>
+      <carousel :per-page="1" :pagination-enabled="false" :navigation-enabled="true">
+        <slide v-for="photo in portfolioItem.photos" :key="photo">
+          <nuxt-link :to="`/portfolio/${portfolioItem.slug}`">
+            <img :src="require('@/assets/img/' + photo)" class="w-100">
+          </nuxt-link>
+        </slide>
+      </carousel>
+      <div class="content position-absolute d-flex align-items-center justify-content-end">
+        <p class="m-0 pr-3">{{portfolioItem.title}}</p>
+      </div>
+      <div class="hover position-absolute d-flex align-items-center justify-content-start">
+        <p class="m-0 pl-3">{{portfolioItem.date}}</p>
+      </div>
   </div>
 </template>
 
 <script>
     export default {
         name: "index",
-        props:['title','date','photos']
+        props:['portfolioItem']
     }
 </script>
 

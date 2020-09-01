@@ -127,7 +127,17 @@
               },
               {
                 name:'خدمات',
-                href:'/services/all'
+                href:'/services/category',
+                subMenu:[
+                  {
+                    name:'تعمیر شوفاژ',
+                    href:''
+                  },
+                  {
+                    name:'حفر چاه',
+                    href:''
+                  },
+                ]
               },
               {
                 name:'نمونه کارها',

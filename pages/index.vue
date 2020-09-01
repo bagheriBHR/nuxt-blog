@@ -33,7 +33,7 @@
       <Title title="نمونه کار" show="true" link="portfolio"/>
       <div class="d-flex flex-wrap mb-4">
         <div class="col-12 col-md-3 mt-4" v-for="item in portfolio" :key="item.id">
-          <portfolioCarousel :title="item.title" :photos="item.photos" :date="item.date"/>
+          <portfolioCarousel :portfolioItem="item"/>
         </div>
       </div>
     </div>
@@ -209,21 +209,25 @@
           {
             photo:'service1.jpg',
             title:'تعمیر موتورخانه',
+            slug:'تعمیر موتورخانه',
             category_id:'5'
           },
           {
             photo:'service2.jpg',
             title:'لوله کشی ساختمان',
+            slug:'لوله کشی ساختمان',
             category_id:'4'
           },
           {
             photo:'service3.jpg',
             title:'حفر چاه',
+            slug:'حفر چاه',
             category_id:'6'
           },
           {
             photo:'service4.jpg',
             title:'تعمیر شوفاژ',
+            slug:'تعمیر شوفاژ',
             category_id:'3'
           },
         ],
@@ -319,49 +323,57 @@
           {
             id:'1',
             title: 'تعمیر شوفاژ',
+            slug: 'تعمیر-شوفاژ',
             photos:['service42.jpg','service4.jpg'],
             date:'3/4/99'
           },
           {
             id:'2',
             title: 'حفر چاه',
+            slug: 'حفر-چاه',
             photos:['service32.jpg','service3.jpg'],
             date:'3/4/99'
           },
           {
             id:'3',
             title: 'لوله کشی ساختمان',
+            slug: 'لوله-کشی-ساختمان',
             photos:['service22.jpg','service2.jpg'],
             date:'3/4/99'
           },
           {
             id:'4',
             title: 'تعمیر موتور',
+            slug: 'تعمیر-موتور',
             photos:['service12.jpg','service1.jpg'],
             date:'3/4/99'
           },
           {
             id:'5',
             title: 'تعمیر شوفاژ',
-            photos:['service4.jpg','service42.jpg'],
+            slug: 'تعمیر-شوفاژ',
+            photos:['service42.jpg','service4.jpg'],
             date:'3/4/99'
           },
           {
             id:'6',
             title: 'حفر چاه',
-            photos:['service3.jpg','service32.jpg'],
+            slug: 'حفر-چاه',
+            photos:['service32.jpg','service3.jpg'],
             date:'3/4/99'
           },
           {
             id:'7',
             title: 'لوله کشی ساختمان',
-            photos:['service2.jpg','service22.jpg'],
+            slug: 'لوله-کشی-ساختمان',
+            photos:['service22.jpg','service2.jpg'],
             date:'3/4/99'
           },
           {
             id:'8',
             title: 'تعمیر موتور',
-            photos:['service1.jpg','service12.jpg'],
+            slug: 'تعمیر-موتور',
+            photos:['service12.jpg','service1.jpg'],
             date:'3/4/99'
           },
         ],
