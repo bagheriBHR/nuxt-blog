@@ -77,8 +77,6 @@
                     </b-button>
                   </template>
                 </b-modal>
-
-                <b-nav-item href="#">عضویت</b-nav-item>
               </div>
             </div>
             <!--  END OF NAVBAR BUTTONS  -->
@@ -219,15 +217,15 @@
       border-top: 1px solid #fff;
       border-bottom: 1px solid #fff;
     }
-    .header_button .login:after{
-      content: "";
-      height: 13px;
-      width: 1px;
-      background-color: rgba(255,255,255,0.3);
-      position: absolute;
-      top: 11px;
-      left: 0;
-    }
+    /*.header_button .login:after{*/
+    /*  content: "";*/
+    /*  height: 13px;*/
+    /*  width: 1px;*/
+    /*  background-color: rgba(255,255,255,0.3);*/
+    /*  position: absolute;*/
+    /*  top: 11px;*/
+    /*  left: 0;*/
+    /*}*/
   }
 
   .bg{

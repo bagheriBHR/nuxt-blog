@@ -2,7 +2,9 @@
   <div class="bg-grey">
 
     <page-header />
-
+    <back-to-top bottom="10px" right="10px">
+      <button type="button" class="btn bg-blue text-white btn-to-top"><i class="fa fa-chevron-up"></i></button>
+    </back-to-top>
     <Nuxt />
 
     <page-footer />
@@ -13,11 +15,12 @@
 <script>
   import PageHeader from '@/components/header';
   import PageFooter from '@/components/footer';
-
+  import BackToTop from 'vue-backtotop'
   export default {
     components:{
       PageHeader,
       PageFooter,
+      BackToTop
     },
   }
 
@@ -44,5 +47,10 @@ body{
 *::after {
   box-sizing: border-box;
   margin: 0;
+}
+.btn-to-top {
+  padding: 5px 10px;
+  font-size: 15px;
+  line-height: 22px;
 }
 </style>
