@@ -1,6 +1,6 @@
 <template>
     <div>
-      <b-card no-body class="mb-2">
+      <b-card no-body class="mb-2" v-if="!price">
         <b-card-header header-tag="header" class="p-0" role="tab">
           <b-button block v-b-toggle="'accordion-'+attributeGroup.id" variant="white">{{attributeGroup.title}}</b-button>
         </b-card-header>
@@ -28,28 +28,32 @@
           </b-card-body>
         </b-collapse>
       </b-card>
-<!--      <div v-if="attributeGroup.type='checkbox'">-->
-<!--       -->
-<!--      </div>-->
-
-<!--      <div v-if="attributeGroup.type='range'">-->
-<!--        <label for="range-1">Example range with min and max</label>-->
-<!--        <b-form-input id="range-1" v-model="value" type="range" min="0" max="5"></b-form-input>-->
-<!--      </div>-->
-
-<!--      <div v-if="attributeGroup.type='switch'">-->
-<!--        <b-form-checkbox v-model="checked" name="check-button" switch>-->
-<!--          Switch Checkbox <b>(Checked: {{ checked }})</b>-->
-<!--        </b-form-checkbox>-->
-<!--      </div>-->
-
+      <b-card no-body class="mb-2" v-else>
+        <b-card-header header-tag="header" class="p-0" role="tab">
+          <b-button block v-b-toggle="'accordion-price'" variant="white">محدوده قیمت</b-button>
+        </b-card-header>
+        <b-collapse id="accordion-price" accordion="my-accordion" role="tabpanel">
+          <b-card-body class="p-0">
+            <b-card-text>
+              <form method="post" >
+                <div data-role="rangeslider">
+                  <label for="price-min">Price:</label>
+                  <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
+                  <label for="price-max">Price:</label>
+                  <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
+                </div>
+              </form>
+            </b-card-text>
+          </b-card-body>
+        </b-collapse>
+      </b-card>
     </div>
 </template>
 
 <script>
   export default {
     name: "index",
-    props:['attributeGroup'],
+    props:['attributeGroup','price'],
     data() {
       return {
         selected: [],

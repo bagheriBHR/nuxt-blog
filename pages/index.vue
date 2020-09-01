@@ -131,7 +131,8 @@
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'900000',
             name:'نام محصول 1',
-            slug:'نام محصول 1'
+            slug:'نام محصول 1',
+            category_id:'3',
           },
           {
             id:'2',
@@ -140,7 +141,8 @@
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'1900000',
             name:'نام محصول 2',
-            slug:'نام محصول 2'
+            slug:'نام محصول 2',
+            category_id:'3',
           },
           {
             id:'3',
@@ -149,7 +151,8 @@
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount: '',
             name:'نام محصول 3',
-            slug:'نام محصول 3'
+            slug:'نام محصول 3',
+            category_id:'4',
           },
           {
             id:'4',
@@ -158,7 +161,8 @@
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'2700000',
             name:'نام محصول 4',
-            slug:'نام محصول 4'
+            slug:'نام محصول 4',
+            category_id:'4',
           },
           {
             id:'5',
@@ -167,7 +171,8 @@
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'900000',
             name:'نام محصول 1',
-            slug:'نام محصول 1'
+            slug:'نام محصول 1',
+            category_id:'5',
           },
           {
             id:'6',
@@ -176,7 +181,8 @@
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'1900000',
             name:'نام محصول 2',
-            slug:'نام محصول 2'
+            slug:'نام محصول 2',
+            category_id:'7',
           },
           {
             id:'7',
@@ -185,7 +191,8 @@
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount: '',
             name:'نام محصول 3',
-            slug:'نام محصول 3'
+            slug:'نام محصول 3',
+            category_id:'7',
           },
           {
             id:'8',
@@ -194,41 +201,30 @@
             content:'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی ',
             discount:'2700000',
             name:'نام محصول 4',
-            slug:'نام محصول 4'
+            slug:'نام محصول 4',
+            category_id:'8',
           },
         ],
         services:[
           {
             photo:'service1.jpg',
-            title:'تعمیر موتورخانه'
+            title:'تعمیر موتورخانه',
+            category_id:'5'
           },
           {
             photo:'service2.jpg',
-            title:'لوله کشی ساختمان'
+            title:'لوله کشی ساختمان',
+            category_id:'4'
           },
           {
             photo:'service3.jpg',
-            title:'حفر چاه'
+            title:'حفر چاه',
+            category_id:'6'
           },
           {
             photo:'service4.jpg',
-            title:'تعمیر شوفاژ'
-          },
-          {
-            photo:'service1.jpg',
-            title:'تعمیر موتورخانه'
-          },
-          {
-            photo:'service2.jpg',
-            title:'لوله کشی ساختمان'
-          },
-          {
-            photo:'service3.jpg',
-            title:'حفر چاه'
-          },
-          {
-            photo:'service4.jpg',
-            title:'تعمیر شوفاژ'
+            title:'تعمیر شوفاژ',
+            category_id:'3'
           },
         ],
         productCategory: [

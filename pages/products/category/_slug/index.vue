@@ -1,8 +1,9 @@
 <template>
   <div class="bg-gray col-12 d-flex flex-column flex-md-row px-2 px-md-5 py-4">
     <div class="d-flex flex-column col-12 col-md-2 p-0">
-      <div  class="d-flex flex-column align-item-start w-100" v-for="item in attributeGroups" :key="item.title">
-        <Sidebar :attributeGroup="item"/>
+      <div  class="d-flex flex-column align-item-start w-100" >
+        <Sidebar :attributeGroup="item" v-for="item in attributeGroups" :key="item.title"/>
+        <Sidebar price="true" />
       </div>
     </div>
     <div class="col-12 col-md-10 px-0 pr-md-2 mt-3 mt-md-0">
@@ -116,11 +117,6 @@
             title:'رنگ',
             attributeValues:['آبی','سیاه','سفید','قهوه ای','قرمز','نارنجی','سبز'],
           },
-          {
-            id:'4',
-            title:'محدوده قیمت',
-            attributeValues:['محدوده1','محدوده2','محدوده3','محدوده4' ],
-          }
         ],
       }
     },

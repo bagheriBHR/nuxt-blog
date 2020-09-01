@@ -12,7 +12,7 @@
             <b-card-body>
               <b-card-text>
                 <ul class="pr-1">
-                  <li v-for="subItem in category" v-if="item.id===subItem.parentId" :key="subItem.id"><button @click="subItemClicked(subItem.slug)"> {{subItem.name}}</button></li>
+                  <li v-for="subItem in category" v-if="item.id===subItem.parentId" :key="subItem.id"><button @click="subItemClicked(subItem.slug,subItem.id)"> {{subItem.name}}</button></li>
                 </ul>
               </b-card-text>
             </b-card-body>
@@ -28,8 +28,9 @@
       name: "index",
       props:['title','category','attributeGroup'],
       methods:{
-        subItemClicked(slug){
+        subItemClicked(slug,id){
           this.$emit('subItemClicked',slug)
+          this.$emit('subItemClickedId',id)
         }
       }
     }
