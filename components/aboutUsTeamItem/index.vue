@@ -1,7 +1,7 @@
 <template>
     <div class="col-12 col-md-3 d-flex flex-column align-items-start mt-5">
       <div class="image_container position-relative">
-        <img :src="require('@/assets/image/' + employee.photo)" class="w-100">
+        <img :src="require('@/assets/img/' + employee.photo)" class="w-100">
         <div class="hover d-flex align-items-center justify-content-center h-100 w-100 position-absolute">
           <div v-for="item in employee.socials">
             <a v-b-tooltip.hover :title="item.value">

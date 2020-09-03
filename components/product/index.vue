@@ -5,7 +5,7 @@
         <div v-if="product.discount" class="label_discount">
           {{discount_price}}%
         </div>
-        <img :src="require('@/assets/image/' + product.photo)" class="">
+        <img :src="require('@/assets/img/' + product.photo)" class="">
         <nuxt-link :to="`/products/${product.slug}`" class="position-absolute btn"> اطلاعات بیشتر</nuxt-link>
       </div>
       <div class="content_bg d-flex flex-column align-items-start px-3 pt-3">
