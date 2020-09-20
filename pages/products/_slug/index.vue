@@ -10,9 +10,9 @@
                   <b-tabs vertical end>
                     <b-tab v-for="item in productInfo.images">
                       <template v-slot:title>
-                        <img :src="require('@/assets/image/' + item)">
+                        <img :src="require('@/assets/img/' + item)">
                       </template>
-                      <b-card-img :src="require('@/assets/image/' + item)"/>
+                      <b-card-img :src="require('@/assets/img/' + item)"/>
                     </b-tab>
                   </b-tabs>
                 </b-card>
@@ -52,7 +52,7 @@
           </div>
         </div>
       </div>
-      <div class="d-flex flex-column col-12 col-md-3 p-0 pr-md-2 mt-3 mt-md=0">
+      <div class="d-flex flex-column col-12 col-md-3 p-0 pr-md-2 mt-3 mt-md-0">
         <div class="bg-white customShadow p-3 h-100">
           <div class="properties d-flex flex-column text-right">
             <p class="text-justify">لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر</p>
